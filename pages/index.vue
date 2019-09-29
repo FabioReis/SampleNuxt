@@ -30,6 +30,16 @@ import Logo from '~/components/Logo.vue'
 export default {
   components: {
     Logo
+  },
+  data() {
+    return {
+      posts: []
+    }
+  },
+  async asyncData(ctx) {
+    return {
+      posts: await ctx.app.$anotherRepository.anotherMethod
+    }
   }
 }
 </script>
