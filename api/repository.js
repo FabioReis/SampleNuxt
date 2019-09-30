@@ -1,5 +1,8 @@
 // Provide nuxt-axios instance to use same configuration across the whole project
 export default ($axios) => (resource) => ({
+  http: $axios,
+  basePath: resource,
+
   index() {
     return $axios.$get(`${resource}`)
   },

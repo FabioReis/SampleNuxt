@@ -5,8 +5,7 @@ export default (ctx, inject) => {
   // inject the repository in the context (ctx.app.$repository)
   // And in the Vue instances (this.$repository in your components)
   const baseRepository = baseRepositoryWrapper(ctx.$axios)
-  inject('customRepository', customRepository(baseRepository))
 
-  // You can reuse the repositoryWithAxios object:
+  inject('customRepository', customRepository(baseRepository))
   inject('anotherRepository', baseRepository('/anotherOne'))
 }

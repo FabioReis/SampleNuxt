@@ -38,7 +38,7 @@ export default {
   },
   async asyncData(ctx) {
     return {
-      posts: await ctx.app.$anotherRepository.anotherMethod
+      posts: await ctx.app.$customRepository.anotherMethod('')
     }
   }
 }
