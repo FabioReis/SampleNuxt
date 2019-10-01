@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # real-world-nuxt
 
 > My cat&#39;s meow Nuxt.js project
@@ -20,3 +21,4 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
