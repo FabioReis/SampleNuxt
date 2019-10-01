@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # real-world-nuxt
 
 > My cat&#39;s meow Nuxt.js project
