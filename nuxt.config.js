@@ -48,7 +48,9 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseURL: 'http://localhost:3001'
+  },
   /*
    ** Build configuration
    */
@@ -56,6 +58,9 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {
+      // Added Line
+      config.devtool = ctx.isClient ? 'eval-source-map' : 'inline-source-map'
+    }
   }
 }

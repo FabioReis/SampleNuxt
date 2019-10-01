@@ -28,18 +28,12 @@
 import Logo from '~/components/Logo.vue'
 
 export default {
+  middleware: 'authenticated',
   components: {
     Logo
   },
   data() {
-    return {
-      posts: []
-    }
-  },
-  async asyncData(ctx) {
-    return {
-      posts: await ctx.app.$customRepository.anotherMethod('')
-    }
+    return {}
   }
 }
 </script>

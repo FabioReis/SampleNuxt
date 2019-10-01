@@ -47,6 +47,10 @@
           </b-form-group>
         </validation-provider>
 
+        <span v-if="hasServerError" class="text-danger float-left"
+          >Usuário ou senha inválidos</span
+        >
+
         <b-button class="float-right" type="submit" variant="primary"
           >Login
         </b-button>
@@ -58,6 +62,7 @@
 <script>
 import { ValidationProvider, extend } from 'vee-validate'
 import { required, email } from 'vee-validate/dist/rules'
+import { mapMutations } from 'vuex'
 import Logo from '~/components/Logo.vue'
 
 extend('required', {
@@ -71,6 +76,11 @@ extend('email', {
 })
 
 export default {
+  middleware({ store, redirect }) {
+    if (store.state.isUserAuthenticated) {
+      return redirect('/')
+    }
+  },
   components: {
     Logo,
     ValidationProvider
@@ -79,26 +89,43 @@ export default {
   data() {
     return {
       userName: null,
-      password: null
+      password: null,
+      hasServerError: false
     }
   },
   methods: {
-    async onSubmit(e) {
+    async onSubmit(ctx) {
+      if (await this.isLoginAndPasswordValid()) {
+        if (await this.$authRepository.login(this.userName, this.password)) {
+          this.$store.commit('setIsUserAuthenticated', true)
+
+          this.$router.push('/')
+
+          this.userName = null
+          this.password = null
+
+          this.resetValidations()
+        } else {
+          this.hasServerError = true
+        }
+      }
+    },
+    async isLoginAndPasswordValid() {
       const isVPassword = (await this.$refs.observerPassword.validate()).valid
       const isVUserName = (await this.$refs.observerUserName.validate()).valid
 
-      if (isVPassword && isVUserName) {
-        this.$router.push('/')
-
-        this.userName = null
-        this.password = null
-
-        requestAnimationFrame(() => {
-          this.$refs.observerUserName.reset()
-          this.$refs.observerPassword.reset()
-        })
-      }
-    }
+      return isVPassword && isVUserName
+    },
+    resetValidations() {
+      requestAnimationFrame(() => {
+        this.hasServerError = false
+        this.$refs.observerUserName.reset()
+        this.$refs.observerPassword.reset()
+      })
+    },
+    ...mapMutations({
+      toggle: 'setIsUserAuthenticated'
+    })
   }
 }
 </script>
