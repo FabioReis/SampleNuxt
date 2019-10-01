@@ -1,6 +1,6 @@
 <template>
   <div class="container h-100">
-    <div class="row h-100 justify-content-center align-items-center">
+    <div class="row w-100 h-100 justify-content-center align-items-center">
       <logo class="login-logo" />
       <b-form class="col-4 m-2" @submit.prevent="onSubmit">
         <validation-provider
@@ -9,7 +9,12 @@
           mode="lazy"
           rules="required|email"
         >
-          <b-form-group id="username-group" label="Email:" label-for="username">
+          <b-form-group
+            id="username-group"
+            class="text-left"
+            label="Email:"
+            label-for="username"
+          >
             <b-form-input
               id="username"
               v-model="userName"
@@ -26,7 +31,12 @@
           mode="lazy"
           rules="required"
         >
-          <b-form-group id="password-group" label="Senha:" label-for="password">
+          <b-form-group
+            id="password-group"
+            class="text-left"
+            label="Senha:"
+            label-for="password"
+          >
             <b-form-input
               id="password"
               v-model="password"
