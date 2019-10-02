@@ -101,6 +101,8 @@ export default {
       // this.$moment()
       // TODO: Exemplo de utilização de um mixin de utilidade, deletar
       // const x = this.convertApiStringDate('2014-02-27T10:00:00')
+      // TODO: um exemplo de chamada de um método de um mixin global
+      // this.anExampleCommonMethod()
 
       if (await this.isLoginAndPasswordValid()) {
         if (await this.$authRepository.login(this.userName, this.password)) {
