@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <a class="button--grey" href="" @click="logout">
+      Logout
+    </a>
     <div>
       <logo />
       <h1 class="title">
@@ -34,6 +37,12 @@ export default {
   },
   data() {
     return {}
+  },
+  methods: {
+    async logout() {
+      await this.$store.commit('setIsUserAuthenticated', false)
+      await this.$router.push('/login')
+    }
   }
 }
 </script>

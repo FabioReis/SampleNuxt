@@ -5,6 +5,12 @@
       "name": "Fabio Reis",
       "email": "fabio@spaceneedle.com.br",
       "password": "teste"
+    },
+    {
+      "id": 2,
+      "name": "Matheus Santos",
+      "email": "msantos@eusou.space",
+      "password": "teste"
     }
   ]
 }
