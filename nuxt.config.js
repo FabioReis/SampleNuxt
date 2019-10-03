@@ -34,6 +34,7 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
+    // Doc: https://github.com/nuxt-community/moment-module
     '@nuxtjs/moment'
   ],
   /*
@@ -43,7 +44,9 @@ export default {
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    // Doc: https://github.com/rubystarashe/nuxt-vuex-localstorage
+    'nuxt-vuex-localstorage'
   ],
   /*
    ** Axios module configuration

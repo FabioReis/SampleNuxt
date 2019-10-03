@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     async logout() {
-      await this.$store.commit('setIsUserAuthenticated', false)
+      await this.$store.commit('localStorage/setIsUserAuthenticated', false)
       await this.$router.push('/login')
     }
   }

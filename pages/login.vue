@@ -78,7 +78,7 @@ extend('email', {
 
 export default {
   middleware({ store, redirect }) {
-    if (store.state.isUserAuthenticated) {
+    if (store.state.localStorage.isUserAuthenticated) {
       return redirect('/')
     }
   },
@@ -106,7 +106,7 @@ export default {
 
       if (await this.isLoginAndPasswordValid()) {
         if (await this.$authRepository.login(this.userName, this.password)) {
-          this.$store.commit('setIsUserAuthenticated', true)
+          this.$store.commit('localStorage/setIsUserAuthenticated', true)
 
           this.$router.push('/')
 
