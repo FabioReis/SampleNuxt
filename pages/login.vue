@@ -64,6 +64,7 @@ import { ValidationProvider, extend } from 'vee-validate'
 import { required, email } from 'vee-validate/dist/rules'
 import { mapMutations } from 'vuex'
 import Logo from '~/components/Logo.vue'
+import dateTimeMixin from '~/mixins/dateTimeMixin.js'
 
 extend('required', {
   ...required,
@@ -85,6 +86,7 @@ export default {
     Logo,
     ValidationProvider
   },
+  mixins: [dateTimeMixin],
   layout: 'login',
   data() {
     return {
@@ -95,6 +97,13 @@ export default {
   },
   methods: {
     async onSubmit(ctx) {
+      // TODO: Exemplo de utilização do moment js injetado pelo nuxt, remover quando tiver documentado
+      // this.$moment()
+      // TODO: Exemplo de utilização de um mixin de utilidade, deletar
+      // const x = this.convertApiStringDate('2014-02-27T10:00:00')
+      // TODO: um exemplo de chamada de um método de um mixin global
+      // this.anExampleCommonMethod()
+
       if (await this.isLoginAndPasswordValid()) {
         if (await this.$authRepository.login(this.userName, this.password)) {
           this.$store.commit('setIsUserAuthenticated', true)

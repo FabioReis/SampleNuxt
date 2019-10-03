@@ -27,13 +27,14 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/repository'],
+  plugins: ['~/plugins/apiRepository', '~/plugins/mixinCommonMethods'],
   /*
    ** Nuxt.js dev-modules
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/moment'
   ],
   /*
    ** Nuxt.js modules
@@ -50,6 +51,9 @@ export default {
    */
   axios: {
     baseURL: 'http://localhost:3001'
+  },
+  moment: {
+    locales: ['pt-br', 'es']
   },
   /*
    ** Build configuration
